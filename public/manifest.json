@@ -1,8 +1,8 @@
 {
-  "name": "BulApp",
+  "name": "FormFill",
   "version": "1.0.0",
   "manifest_version": 2,
-  "description": "Find your beer",
+  "description": "Form fill app",
   "icons": {
       "512": "logo512.png"
   },
@@ -10,7 +10,5 @@
       "default_icon": "logo512.png",
       "default_popup": "popup.html"
   },
-  "permissions": [
-    "geolocation"
-  ]
+  "permissions": []
 }
