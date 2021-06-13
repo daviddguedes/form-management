@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 const LineFormItem = ({ id, onAddItem, onDeleteItem, onChangeLineItem, stateUpdate, update }) => {
   const [attribute, setAttribute] = useState('id');
@@ -88,4 +88,4 @@ const LineFormItem = ({ id, onAddItem, onDeleteItem, onChangeLineItem, stateUpda
   )
 }
 
-export default LineFormItem;
+export default memo(LineFormItem);
