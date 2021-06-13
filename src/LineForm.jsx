@@ -64,13 +64,17 @@ const LineForm = ({ update, state }) => {
       const elementIndex = parsedValue.findIndex(el => el.key === formName);
 
       if (elementIndex !== -1 && !update) {
-        setMessage({ show: true, color: 'red', text: 'This form already exists. Try another name.' });
+        setMessage({ show: true, color: 'red', text: 'This form name already exists. Try another name.' });
       } else if (update) {
         const elementUpdateIndex = parsedValue.findIndex(el => el.key === state.key);
         if (elementUpdateIndex !== -1) {
-          parsedValue[elementUpdateIndex] = { key: formName, values: countInputs };
-          await window.localStorage.setItem(FORM_FILL, JSON.stringify(parsedValue));
-          setMessage({ show: true, color: 'blue', text: 'It was successfully updated.' });
+          if (parsedValue.some(p => p.key === formName)) {
+            setMessage({ show: true, color: 'red', text: 'This form name already exists. Try another name.' });
+          } else {
+            parsedValue[elementUpdateIndex] = { key: formName, values: countInputs };
+            await window.localStorage.setItem(FORM_FILL, JSON.stringify(parsedValue));
+            setMessage({ show: true, color: 'blue', text: 'It was successfully updated.' });
+          }
         }
       } else {
         parsedValue.push({ key: formName, values: countInputs });
